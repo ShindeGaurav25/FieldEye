@@ -19,7 +19,6 @@ def main():
     mission = SurveyMission()
 
     mission.generate_waypoints()
-
     mission.show_waypoints()
 
     drone.connect()
@@ -28,15 +27,17 @@ def main():
 
     camera.start()
 
-    gps.update()
-
-    lidar.scan()
-
-    camera.capture()
+    mission.execute_mission(
+        drone,
+        camera,
+        gps,
+        lidar
+    )
 
     drone.land()
-
     camera.stop()
+
+    print("\nMission Completed Successfully")
 
 
 if __name__ == "__main__":

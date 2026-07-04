@@ -7,6 +7,8 @@ Developer : Gaurav Shinde
 Project : FieldEye
 """
 
+import time
+
 
 class Drone:
     """
@@ -35,6 +37,16 @@ class Drone:
             self.flying = True
         else:
             print("Arm Drone First")
+
+    def fly_to_waypoint(self, waypoint_number):
+        print(f"Flying to Waypoint {waypoint_number}...")
+        time.sleep(2)
+        print("✓ Arrived")
+
+    def return_home(self):
+        print("\nReturning Home...")
+        time.sleep(2)
+        print("✓ Home Reached")
 
     def land(self):
         if self.flying:
