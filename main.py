@@ -1,3 +1,5 @@
+import time
+
 from src.drone.drone import Drone
 from src.camera.camera import Camera
 from src.gps.gps import GPS
@@ -10,6 +12,8 @@ def main():
     print("=" * 50)
     print("FIELD EYE")
     print("=" * 50)
+
+    start_time = time.time()
 
     drone = Drone()
     camera = Camera()
@@ -37,7 +41,18 @@ def main():
     drone.land()
     camera.stop()
 
-    print("\nMission Completed Successfully")
+    end_time = time.time()
+
+    print("\n======================================")
+    print("MISSION SUMMARY")
+    print("======================================")
+    print("Mission Status : SUCCESS")
+    print(f"Total Waypoints : {len(mission.waypoints)}")
+    print(f"Mission Time : {end_time-start_time:.2f} seconds")
+    print(f"Images Captured : {len(mission.waypoints)}")
+    print(f"GPS Points : {len(mission.waypoints)}")
+    print(f"LiDAR Scans : {len(mission.waypoints)}")
+    print("======================================")
 
 
 if __name__ == "__main__":
